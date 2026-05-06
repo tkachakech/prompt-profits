@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prompt Profits - Curated high-yield research platforms and gig opportunities. Best Paid Research Sites 2026, AI Prompt Engineering Jobs, and Passive Income Tools.">
+    <meta name="keywords" content="Best Paid Research Sites 2026, AI Prompt Engineering Jobs, Passive Income Tools, Gig Economy, Research Studies">
+    <title>Prompt Profits - Premium Gig Curation</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%230F172A' /><path d='M50 15 L85 35 L85 75 L50 95 L15 75 L15 35 Z' stroke='%2322C55E' stroke-width='6' fill='none'/><path d='M35 60 L45 50 L55 55 L65 40' stroke='%2322C55E' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/><circle cx='65' cy='40' r='6' fill='%2322C55E' /></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darktech: {
+                            bg: '#0F172A',
+                            card: '#1a2744',
+                            accent: '#22C55E',
+                            accentLight: 'rgba(34, 197, 94, 0.15)',
+                            accentDark: '#16a34a',
+                            text: '#F8FAFC',
+                            textMuted: '#cbd5e1',
+                            border: '#334155',
+                            borderAccent: 'rgba(34, 197, 94, 0.3)'
+                        }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(34, 197, 94, 0.25)',
+                        'glow-lg': '0 0 30px rgba(34, 197, 94, 0.35)'
+                    },
+                    transitionDuration: {
+                        'fast': '150ms',
+                        'normal': '300ms'
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root {
+            --focus-outline: 2px solid #22C55E;
+            --focus-offset: 2px;
+        }
+
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body { overflow-x: hidden; }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0F172A; }
+        ::-webkit-scrollbar-thumb { background: #22C55E; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #16a34a; }
+
+        :focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: var(--focus-offset);
+            border-radius: 0.25rem;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            html { scroll-behavior: smooth; }
+            * { transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        .glass-panel {
+            background: rgba(26, 39, 68, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.3s ease;
+        }
+        .glass-panel:hover { border-color: rgba(34, 197, 94, 0.6); transform: translateY(-4px); box-shadow: 0 12px 40px 0 rgba(34, 197, 94, 0.2); }
+
+        .sidebar-open { transform: translateX(0) !important; }
+
+        /* High contrast mode */
+        body.high-contrast { background-color: #000 !important; color: #fff !important; }
+        body.high-contrast .fixed.top-0.left-0 { display: none !important; }
+        body.high-contrast .glass-panel, body.high-contrast .bg-darktech-bg, body.high-contrast .bg-darktech-card {
+            background: #000 !important; border: 2px solid #fff !important; backdrop-filter: none !important; box-shadow: none !important;
+        }
+        body.high-contrast .text-darktech-textMuted { color: #ddd !important; }
+        body.high-contrast .text-darktech-accent, body.high-contrast .text-green-400 { color: #FFD700 !important; }
+        body.high-contrast button, body.high-contrast a { border: 2px solid #fff !important; }
+
+        /* Button accessibility */
+        button, a { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+        /* Skip to main content */
+        .skip-link {
+            position: absolute; top: -40px; left: 0; background: #22C55E; color: #0F172A; padding: 8px; z-index: 100; text-decoration: none; border-radius: 0 0 4px 0; font-weight: bold;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* Reduced motion animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .animate-spin-slow { animation: spin 3s linear infinite; }
+            @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        }
+
+        /* Active tab style */
+        .active-tab {
+            background: rgba(34, 197, 94, 0.15) !important;
+            color: #F8FAFC !important;
+            border: 1px solid rgba(34, 197, 94, 0.35) !important;
+            box-shadow: none !important;
+        }
+
+        /* Utility group fix */
+        .utility-group {
+            display: flex; flex-direction: row; align-items: center; gap: 0.75rem; flex-wrap: nowrap; white-space: nowrap;
+        }
+
+        /* Search input compact styling */
+        .search-input {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            color: #F8FAFC;
+            padding: 0.5rem 0.75rem;
+            border-radius: 9999px;
+            min-height: 44px;
+            width: 12rem;
+            max-width: 40vw;
+        }
+        .search-input::placeholder { color: rgba(248,250,252,0.55); }
+
+        /* Small utility icon hover */
+        .util-btn {
+            background: transparent; border: 1px solid transparent; padding: 0.5rem; border-radius: 0.5rem; min-width: 44px; min-height: 44px;
+        }
+        .util-btn:hover { box-shadow: 0 0 8px rgba(34,197,94,0.12); border-color: rgba(34,197,94,0.18); }
+
+        @media (max-width: 480px) { .search-input { width: 9rem; } }
+
+        /* visually-hidden (sr-only) */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    </style>
+</head>
+<body class="bg-darktech-bg text-darktech-text min-h-screen font-sans antialiased relative pb-20 selection:bg-darktech-accent selection:text-darktech-bg">
+    <!-- System Notice -->
+    <div id="system-notice" class="sticky top-0 z-[100] bg-yellow-900/80 text-yellow-100 p-2 text-center text-sm font-semibold backdrop-blur-md border-b border-yellow-600/50">
+        ⚠️ Userlytics is currently experiencing payment delays, and verification can take more than a week.
+    </div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Background Gradient -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none" aria-hidden="true">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-darktech-accent opacity-5 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-emerald-900 opacity-5 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Manifesto Sidebar -->
+    <aside id="manifesto-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-darktech-bg border-l border-darktech-accent z-[100] transform translate-x-full transition-transform duration-normal p-8 overflow-y-auto shadow-2xl" aria-label="The Playbook: Site Manifesto" role="complementary" aria-hidden="true">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-darktech-accent font-bold text-2xl uppercase tracking-tighter">The Playbook</h2>
+            <button id="manifesto-close" onclick="toggleManifesto()" aria-label="Close manifesto" class="text-darktech-accent hover:text-darktech-text transition-colors focus-visible:rounded">
+                <i class="ph ph-x text-3xl" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="space-y-6 text-darktech-textMuted leading-relaxed text-base">
+            <p class="text-xl italic text-darktech-text">"Respecting your time is our only metric."</p>
+            <p>Most aggregators are junk heaps. They trade your attention for pennies. <strong>Prompt Profits</strong> is built on deep focus and high rewards. Every platform here is hand-vetted. We prefer one $100 study over a thousand $0.10 surveys.</p>
+
+            <div class="border-l-4 border-darktech-accent pl-4 py-2 mt-6 bg-darktech-card rounded">
+                <h3 class="text-darktech-accent font-bold mb-2 uppercase tracking-widest text-sm">Transparency & Monetization</h3>
+                <p class="mb-3">Why do this for free? Simple. I believe in the open-source philosophy, providing unrestricted access to high-tier tools.</p>
+                <p class="mb-3">To keep the servers running, exactly <strong>one</strong> platform on this board uses my elite affiliate link. If you sign up and earn there, the platform pays me a small finder's fee at absolutely zero cost to you.</p>
+                <p>If you find this curation valuable and want to bypass the affiliate system entirely, you can support the server directly via donation.</p>
+                <a href="https://buymeacoffee.com/breezyspider" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-sm font-bold uppercase tracking-widest border border-darktech-accent text-darktech-accent px-4 py-2 rounded hover:bg-darktech-accent hover:text-darktech-bg transition-colors focus-visible:outline-offset-2">Support via BuyMeACoffee</a>
+            </div>
+        </div>
+    </aside>
+
+    <main id="main-content" class="max-w-6xl mx-auto p-6 lg:p-10" aria-hidden="false">
+        <!-- Header -->
+        <header class="border-b border-darktech-border pb-8 mb-12 text-center mt-8 md:mt-12">
+            <!-- Code-Based Logo -->
+            <div class="flex justify-center mb-6">
+                <svg role="img" width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="logo-title logo-desc" class="shadow-glow rounded-2xl">
+                    <title id="logo-title">Prompt Profits</title>
+                    <desc id="logo-desc">High-tech AI and Profit Logo</desc>
+                    <rect width="100" height="100" rx="16" fill="#0F172A" />
+                    <path d="M50 15 L85 35 L85 75 L50 95 L15 75 L15 35 Z" stroke="#22C55E" stroke-width="4" fill="rgba(34, 197, 94, 0.05)"/>
+                    <path d="M50 30 L70 42 L70 65 L50 78 L30 65 L30 42 Z" stroke="#16A34A" stroke-width="2" fill="none"/>
+                    <path d="M35 60 L45 50 L55 55 L65 40" stroke="#22C55E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="65" cy="40" r="4" fill="#22C55E" />
+                    <circle cx="35" cy="60" r="4" fill="#16A34A" />
+                    <circle cx="45" cy="50" r="2" fill="#22C55E" />
+                    <circle cx="55" cy="55" r="2" fill="#22C55E" />
+                </svg>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-darktech-accent to-green-300 tracking-tight drop-shadow-lg mb-4">
+                Prompt Profits
+            </h1>
+            <p class="text-darktech-textMuted text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto">
+                Curated high-yield tasks, deep focus studies, and verified platforms.
+            </p>
+        </header>
+
+        <!-- Navigation & Controls -->
+        <nav aria-label="Filter platforms by category" class="flex flex-wrap gap-3 justify-center mb-12 items-center">
+            <div role="group" aria-label="Platform categories">
+                <button onclick="filterGigs('All')"
+                        class="filter-btn px-6 py-3 rounded-full active-tab text-darktech-bg font-bold hover:border-darktech-accent shadow-glow transition-all duration-fast transform hover:scale-105 focus-visible:outline-offset-2"
+                        data-filter="All"
+                        aria-pressed="true">
+                    All Gigs
+                </button>
+                <button onclick="filterGigs('5-min')"
+                        class="filter-btn px-6 py-3 rounded-full glass-panel text-darktech-textMuted hover:text-darktech-accent hover:border-darktech-accent transition-all duration-fast focus-visible:outline-offset-2"
+                        data-filter="5-min"
+                        aria-pressed="false">
+                    5-Min (Quick Wins)
+                </button>
+                <button onclick="filterGigs('hour')"
+                        class="filter-btn px-6 py-3 rounded-full glass-panel text-darktech-textMuted hover:text-darktech-accent hover:border-darktech-accent transition-all duration-fast focus-visible:outline-offset-2"
+                        data-filter="hour"
+                        aria-pressed="false">
+                    Hourly (Deep Focus)
+                </button>
+                <button onclick="filterGigs('skill')"
+                        class="filter-btn px-6 py-3 rounded-full glass-panel text-darktech-textMuted hover:text-darktech-accent hover:border-darktech-accent transition-all duration-fast focus-visible:outline-offset-2"
+                        data-filter="skill"
+                        aria-pressed="false">
+                    Skill Based
+                </button>
+            </div>
+
+            <div class="w-px h-8 bg-darktech-border mx-2 hidden md:block" aria-hidden="true"></div>
+
+            <!-- Utility group: Playbook + Search + Utilities (Sound, High Contrast) -->
+            <div class="utility-group" role="group" aria-label="Additional controls">
+                <button id="open-playbook" onclick="toggleManifesto()"
+                        aria-label="Open The Playbook manifesto"
+                        title="Open The Playbook"
+                        class="px-6 py-3 rounded-full border border-darktech-accent/50 text-darktech-accent hover:bg-darktech-accent hover:text-darktech-bg transition-all duration-fast text-sm font-bold tracking-widest uppercase focus-visible:outline-offset-2">
+                    <i class="ph ph-scroll" aria-hidden="true"></i> The Playbook
+                </button>
+
+                <!-- Search: visible compact input with magnifier icon -->
+                <div class="flex items-center gap-2" role="search" aria-label="Search platforms">
+                    <label for="search-box" class="sr-only">Search platforms</label>
+                    <input id="search-box" class="search-input" type="search" placeholder="Search platforms..." aria-label="Search platforms" oninput="searchGigs()" />
+                    <button id="search-clear" class="util-btn" aria-label="Clear search" title="Clear search" onclick="clearSearch()">
+                        <i class="ph ph-x" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <!-- Sound toggle -->
+                <button id="sound-toggle" onclick="toggleSound()" aria-label="Toggle UI Sounds" title="Toggle UI Sounds" class="util-btn" aria-pressed="false">
+                    <i class="ph ph-speaker-high" aria-hidden="true"></i>
+                </button>
+
+                <!-- High contrast -->
+                <button id="contrast-toggle" onclick="toggleHighContrast()" aria-label="Toggle high contrast mode" title="Toggle high contrast" class="util-btn" aria-pressed="false">
+                    <i class="ph ph-eye" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Gig Grid Container -->
+        <div id="gig-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="region" aria-label="Available gigs and platforms" aria-live="polite" aria-busy="true">
+            <div class="col-span-full flex flex-col items-center justify-center py-20 text-darktech-accent">
+                <i class="ph ph-spinner-gap text-4xl mb-4" aria-hidden="true"></i>
+                <p class="text-lg tracking-widest uppercase font-semibold">Connecting to Database...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Subscription Section -->
+    <section class="max-w-4xl mx-auto p-8 mb-8 glass-panel rounded-2xl text-center shadow-glow border border-darktech-accent/50">
+        <h3 class="text-2xl font-bold text-darktech-text mb-2">Weekly Profit Alert</h3>
+        <p class="text-darktech-textMuted mb-6">Get the highest-paying studies sent directly to your inbox before they fill up.</p>
+        <form onsubmit="subscribeUser(event)" class="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
+            <input type="email" id="sub-email" required placeholder="Enter your email address" class="flex-1 bg-darktech-bg border border-darktech-border rounded-xl px-4 py-3 text-darktech-text focus:outline-none focus:border-darktech-accent transition-colors duration-fast placeholder:text-darktech-textMuted/50">
+            <button type="submit" class="bg-gradient-to-r from-darktech-accent to-green-400 text-darktech-bg px-6 py-3 rounded-xl font-bold uppercase tracking-wider hover:scale-105 transition-transform duration-fast shadow-glow text-sm">Subscribe</button>
+        </form>
+        <div id="sub-message" class="mt-4 text-sm font-semibold hidden"></div>
+    </section>
+
+    <!-- Global Visitor Counter -->
+    <footer class="max-w-6xl mx-auto p-6 text-center border-t border-darktech-border mt-8">
+        <p class="text-darktech-textMuted text-sm flex items-center justify-center gap-2">
+            <i class="ph ph-users text-darktech-accent" aria-hidden="true"></i> 
+            Global Operatives Deployed: <span id="visitor-count" class="text-darktech-accent font-bold tracking-widest animate-pulse">...</span>
+        </p>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div id="chat-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <div id="chat-panel" class="hidden w-80 sm:w-96 glass-panel rounded-2xl shadow-2xl mb-4 overflow-hidden flex flex-col h-[450px] transform transition-all origin-bottom-right" role="region" aria-label="Chat assistant panel">
+            <header class="bg-darktech-card border-b border-darktech-border p-4 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></div>
+                    <span class="font-bold text-darktech-accent">Protocol Advisor</span>
+                </div>
+                <button onclick="toggleChat()" aria-label="Close chat panel" class="text-darktech-textMuted hover:text-darktech-text transition-colors focus-visible:rounded">
+                    <i class="ph ph-x text-xl" aria-hidden="true"></i>
+                </button>
+            </header>
+
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4 text-sm" role="log" aria-label="Chat messages" aria-live="polite">
+                <div class="flex flex-col items-start">
+                    <span class="bg-darktech-card text-darktech-text px-4 py-2 rounded-2xl rounded-tl-none max-w-[85%] border border-darktech-border">
+                        🤖 <strong>Protocol Advisor online.</strong> State your objective: platform question, yield target, operational challenge, or tax/verification issue.
+                    </span>
+                </div>
+            </div>
+
+            <div class="p-3 border-t border-darktech-border bg-darktech-bg flex gap-2">
+                <label for="chat-input" class="sr-only">Chat input</label>
+                <input type="text"
+                       id="chat-input"
+                       placeholder="Ask about platforms, yield, tax, bans, VPN..."
+                       class="flex-1 bg-darktech-card border border-darktech-border rounded-full px-4 py-2 text-darktech-text focus:outline-none focus:border-darktech-accent transition-colors duration-fast placeholder:text-darktech-textMuted/50"
+                       onkeypress="handleChatEnter(event)"
+                       aria-label="Chat input">
+                <button onclick="sendChatMessage()" aria-label="Send message" class="bg-darktech-accent text-darktech-bg p-2 rounded-full w-10 h-10 flex items-center justify-center hover:bg-darktech-accentDark transition-colors duration-fast transform hover:scale-110 focus-visible:outline-offset-2">
+                    <i class="ph-fill ph-paper-plane-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <button id="open-chat" onclick="toggleChat()"
+                aria-label="Open chat assistant"
+                class="bg-gradient-to-r from-darktech-accent to-green-400 text-darktech-bg w-14 h-14 rounded-full shadow-glow-lg flex items-center justify-center hover:shadow-glow-lg hover:scale-110 transition-all duration-fast focus-visible:outline-offset-2">
+            <i class="ph ph-chat-teardrop-dots text-3xl font-bold" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <script>
+        // ===== AUDIO ENGINE (Web Audio API) =====
+        let audioCtx = null;
+        let uiSoundEnabled = (localStorage.getItem('uiSoundEnabled') === 'true');
+
+        function ensureAudioContext() {
+            if (!audioCtx) {
+                try {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                } catch (e) {
+                    audioCtx = null;
+                }
+            }
+        }
+
+        // Short blip: ~600Hz, ~50ms with quick attack
+        function playBlip() {
+            if (!uiSoundEnabled) return;
+            ensureAudioContext();
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(600, now);
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.linearRampToValueAtTime(0.12, now + 0.005);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(now);
+            osc.stop(now + 0.06);
+        }
+
+        // Notification tone for bot messages (two short rising blips)
+        function playNotification() {
+            if (!uiSoundEnabled) return;
+            ensureAudioContext();
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            // two-tone: 880 -> 660 quickly
+            osc.frequency.setValueAtTime(880, now);
+            osc.frequency.linearRampToValueAtTime(660, now + 0.08);
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.linearRampToValueAtTime(0.12, now + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(now);
+            osc.stop(now + 0.13);
+        }
+
+        // Play blip on button / actionable element activation (click & keyboard)
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('button, a, [role="button"], input[type="button"], input[type="submit"]');
+            if (btn) {
+                playBlip();
+            }
+        }, { capture: true });
+
+        // Keyboard activation: space/enter on focused actionable elements
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const active = document.activeElement;
+                if (!active) return;
+                const actionable = active.closest ? active.closest('button, a, [role="button"], input[type="button"], input[type="submit"]') : null;
+                if (actionable || (active.tagName === 'BUTTON' || active.tagName === 'A' || active.getAttribute && active.getAttribute('role') === 'button')) {
+                    // Avoid double triggering (space already triggers click). Use small timeout.
+                    setTimeout(() => playBlip(), 0);
+                }
+            }
+        }, { capture: true });
+
+        // ===== SOUND TOGGLE (wire UI) =====
+        const soundBtn = () => document.getElementById('sound-toggle');
+        function applySoundUI() {
+            const btn = soundBtn();
+            if (!btn) return;
+            btn.setAttribute('aria-pressed', !!uiSoundEnabled);
+            if (uiSoundEnabled) btn.classList.add('active-tab'); else btn.classList.remove('active-tab');
+        }
+
+        function toggleSound() {
+            // User gesture: resume context if suspended
+            try {
+                if (!audioCtx) ensureAudioContext();
+                if (audioCtx && audioCtx.state === 'suspended') {
+                    audioCtx.resume().catch(() => {});
+                }
+            } catch (e) {}
+
+            uiSoundEnabled = !uiSoundEnabled;
+            localStorage.setItem('uiSoundEnabled', uiSoundEnabled);
+            applySoundUI();
+            // subtle feedback on toggle
+            if (uiSoundEnabled) {
+                playBlip();
+            }
+        }
+
+        // initialize sound button UI (do NOT toggle state inadvertently)
+        applySoundUI();
+
+        // ===== FOCUS TRAP for manifesto sidebar =====
+        let previouslyFocusedElement = null;
+        let focusTrapHandler = null;
+
+        function getFocusableElements(container) {
+            return Array.from(container.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'))
+                .filter(el => el.offsetParent !== null || el.getAttribute('aria-hidden') !== 'true');
+        }
+
+        function enableFocusTrap(container) {
+            previouslyFocusedElement = document.activeElement;
+            // mark main as hidden to ATs
+            document.getElementById('main-content').setAttribute('aria-hidden', 'true');
+            // set inert if available
+            try { document.getElementById('main-content').inert = true; } catch(e){}
+
+            const focusables = getFocusableElements(container);
+            if (focusables.length) focusables[0].focus();
+
+            focusTrapHandler = function(e) {
+                if (e.key !== 'Tab') return;
+                const focusables = getFocusableElements(container);
+                if (focusables.length === 0) {
+                    e.preventDefault();
+                    return;
+                }
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            };
+            document.addEventListener('keydown', focusTrapHandler);
+        }
+
+        function disableFocusTrap(container) {
+            // restore main visibility
+            document.getElementById('main-content').removeAttribute('aria-hidden');
+            try { document.getElementById('main-content').inert = false; } catch(e){}
+            if (focusTrapHandler) {
+                document.removeEventListener('keydown', focusTrapHandler);
+                focusTrapHandler = null;
+            }
+            if (previouslyFocusedElement && previouslyFocusedElement.focus) previouslyFocusedElement.focus();
+            previouslyFocusedElement = null;
+        }
+
+        // Update toggleManifesto to manage focus and trap
+        function toggleManifesto() {
+            const sidebar = document.getElementById('manifesto-sidebar');
+            const isOpen = sidebar.classList.toggle('sidebar-open');
+            sidebar.setAttribute('aria-hidden', !isOpen);
+            if (isOpen) {
+                // prevent background scrolling
+                document.body.style.overflow = 'hidden';
+                // enable keyboard trap and move focus to close button
+                enableFocusTrap(sidebar);
+                const closeBtn = document.getElementById('manifesto-close');
+                if (closeBtn) {
+                    closeBtn.focus();
+                }
+            } else {
+                document.body.style.overflow = '';
+                disableFocusTrap(sidebar);
+            }
+            playBlip(); // subtle feedback on open/close if enabled
+        }
+
+        // ===== High Contrast UI restore =====
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+            const isEnabled = document.body.classList.contains('high-contrast');
+            localStorage.setItem('highContrastMode', isEnabled);
+            try {
+                document.querySelectorAll('#contrast-toggle').forEach(b => b.setAttribute('aria-pressed', isEnabled));
+            } catch(e){}
+        }
+        if (localStorage.getItem('highContrastMode') === 'true') {
+            document.body.classList.add('high-contrast');
+        }
+
+        // ===== SUPABASE CONNECTION (PRESERVED) =====
+        const SUPABASE_URL = 'https://ljdltxnxdklslomcolfx.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxqZGx0eG54ZGtsc2xvbWNvbGZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczNzMzMTksImV4cCI6MjA5Mjk0OTMxOX0.Lg95TAnhmxTfEPIhqkNaB65Q8mAf9LpEMmQw8kEPVJo';
+
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        let allGigs = [];
+
+        async function subscribeUser(e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('sub-email');
+            const msgBox = document.getElementById('sub-message');
+            const email = emailInput.value.trim();
+            if(!email) return;
+            
+            msgBox.classList.remove('hidden', 'text-red-400', 'text-green-400');
+            msgBox.innerText = 'Subscribing...';
+            msgBox.classList.add('text-darktech-textMuted', 'block');
+            
+            try {
+                const { error } = await supabaseClient.from('subscribers').insert([{ email }]);
+                if (error) throw error;
+                msgBox.classList.remove('text-darktech-textMuted');
+                msgBox.classList.add('text-green-400');
+                msgBox.innerText = 'Success! You are now subscribed.';
+                emailInput.value = '';
+            } catch(err) {
+                console.error(err);
+                msgBox.classList.remove('text-darktech-textMuted');
+                msgBox.classList.add('text-red-400');
+                msgBox.innerText = 'Failed to subscribe. Have you created the subscribers table?';
+            }
+        }
+
+        async function fetchGigs() {
+            try {
+                const { data, error } = await supabaseClient.from('platforms').select('*').order('trust_score', { ascending: false });
+                if (error) throw error;
+                if (!data || data.length === 0) {
+                    document.getElementById('gig-container').innerHTML = `<div class="col-span-full text-center py-10 glass-panel rounded-xl"><i class="ph ph-database text-4xl text-darktech-textMuted mb-2" aria-hidden="true"></i><p class="text-darktech-textMuted">Database is empty. Add sites in Supabase to see them here.</p></div>`;
+                    document.getElementById('gig-container').setAttribute('aria-busy', 'false');
+                    return;
+                }
+                allGigs = data;
+                
+                // --- CUSTOM OVERRIDES ---
+                allGigs = allGigs.map(gig => {
+                    const lowerName = gig.name.toLowerCase();
+                    if (lowerName.includes('userlytics')) {
+                        gig.trust_score = 6.5;
+                        gig.note = 'Userlytics is currently experiencing payment delays, and verification can take more than a week.';
+                    } else if (lowerName.includes('respondent')) {
+                        gig.trust_score = 4.0;
+                        gig.note = 'Currently not working for users in this region.';
+                    } else if (lowerName.includes('user interviews')) {
+                        gig.trust_score = 4.0;
+                        gig.note = 'Currently not working.';
+                    } else if (lowerName.includes('userbrain')) {
+                        gig.trust_score = 3.5;
+                        gig.note = 'Currently not working / not accepting new applicants.';
+                    } else if (lowerName.includes('prolific')) {
+                        gig.trust_score = 9.8;
+                        gig.isTopPick = true;
+                    }
+                    return gig;
+                });
+                
+                renderGigs(allGigs);
+            } catch (err) {
+                console.error(err);
+                document.getElementById('gig-container').innerHTML = `<div class="col-span-full text-center py-10 glass-panel border border-red-900 rounded-xl"><i class="ph ph-warning-circle text-4xl text-red-500 mb-2" aria-hidden="true"></i><p class="text-red-400">Failed to connect to the database.</p></div>`;
+                document.getElementById('gig-container').setAttribute('aria-busy', 'false');
+            }
+        }
+
+        function renderGigs(gigs) {
+            const container = document.getElementById('gig-container');
+            container.innerHTML = '';
+            container.setAttribute('aria-busy', 'false');
+
+            if (gigs.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-center text-darktech-textMuted mt-10">No platforms found for this category.</p>`;
+                return;
+            }
+
+            gigs.forEach(gig => {
+                const targetUrl = gig.referral_link ? gig.referral_link : gig.url;
+                const isAffiliate = gig.referral_link ? `<div class="absolute -top-3 -right-3 bg-gradient-to-r from-darktech-accent to-green-400 text-darktech-bg text-[10px] font-extrabold px-3 py-1.5 rounded-full shadow-glow z-10 flex items-center gap-1 uppercase tracking-wider" aria-label="Affiliate link active"><i class="ph-fill ph-star" aria-hidden="true"></i> Bonus Active</div>` : '';
+
+                let catColor = "text-darktech-textMuted";
+                let catLabel = gig.category;
+                if (gig.category === '5-min') { catColor = "text-green-400"; catLabel = "Quick Task"; }
+                if (gig.category === 'hour') { catColor = "text-blue-400"; catLabel = "Deep Focus"; }
+                if (gig.category === 'skill') { catColor = "text-purple-400"; catLabel = "Skill Based"; }
+
+                const topPickBadge = gig.isTopPick ? `<div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-darktech-bg text-xs font-black px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(250,204,21,0.6)] z-20 uppercase tracking-widest border-2 border-yellow-200">🏆 User's Most Favourite</div>` : '';
+                const cardClasses = gig.isTopPick ? `ring-2 ring-yellow-400 shadow-[0_0_15px_rgba(250,204,21,0.3)]` : ``;
+
+                const cardHTML = `
+                        <article class="relative flex flex-col glass-panel rounded-2xl p-7 shadow-2xl hover:border-darktech-accent hover:-translate-y-2 transition-all duration-fast group focus-within:border-darktech-accent ${cardClasses}">
+                            ${topPickBadge}
+                            ${isAffiliate}
+                            <div class="flex justify-between items-start mb-4 border-b border-darktech-border pb-4 mt-2">
+                                <h2 class="text-2xl font-bold text-darktech-text group-hover:text-darktech-accent transition-colors truncate pr-2">${gig.name}</h2>
+                                <span class="text-xs font-semibold ${catColor} bg-darktech-card px-3 py-1 rounded-full border border-darktech-border whitespace-nowrap shadow-inner">${catLabel}</span>
+                            </div>
+                            <div class="text-darktech-textMuted text-base mb-6 flex-grow space-y-3 font-light">
+                                <div class="flex items-center gap-2"><i class="ph ph-currency-dollar text-green-400 text-lg" aria-hidden="true"></i><span><strong class="text-darktech-text">Pay:</strong> <span class="text-green-400 font-semibold">${gig.estimated_pay || 'Varies'}</span></span></div>
+                                <div class="flex items-center gap-2"><i class="ph ph-bank text-darktech-textMuted text-lg" aria-hidden="true"></i><span><strong class="text-darktech-text">Payout:</strong> ${gig.payout_speed || 'Standard'} <span class="text-darktech-textMuted">(Min: ${gig.threshold || '$0'})</span></span></div>
+                                <div class="flex items-center gap-2"><i class="ph-fill ph-shield-check text-darktech-accent text-lg" aria-hidden="true"></i><span><strong class="text-darktech-text">Trust Score:</strong> ${gig.trust_score || 'N/A'}/10</span></div>
+                                ${gig.note ? `<div class="flex items-start gap-2 mt-3 p-3 bg-red-900/20 border border-red-500/30 rounded-lg"><i class="ph-fill ph-warning-circle text-red-400 text-lg mt-0.5" aria-hidden="true"></i><span class="text-red-200 text-sm italic">${gig.note}</span></div>` : ''}
+                            </div>
+                            <div class="mt-auto pt-4">
+                                <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full text-center bg-darktech-card border border-darktech-border hover:bg-darktech-accent hover:text-darktech-bg hover:border-darktech-accent text-darktech-text px-5 py-3 rounded-xl transition-all duration-fast font-bold uppercase tracking-wider text-sm group-hover:shadow-glow focus-visible:outline-offset-2">
+                                    <span>Open Platform</span><i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </article>
+                    `;
+                container.innerHTML += cardHTML;
+            });
+        }
+
+        function updateFilterButtonState(category) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const isActive = btn.dataset.filter === category;
+                btn.setAttribute('aria-pressed', isActive);
+                if (isActive) {
+                    btn.classList.remove('glass-panel', 'text-darktech-textMuted', 'bg-darktech-accent', 'text-darktech-bg');
+                    btn.classList.add('active-tab', 'font-bold');
+                } else {
+                    btn.classList.add('glass-panel', 'text-darktech-textMuted');
+                    btn.classList.remove('active-tab', 'font-bold');
+                }
+            });
+        }
+
+        function filterGigs(category) {
+            updateFilterButtonState(category);
+            const container = document.getElementById('gig-container');
+            container.setAttribute('aria-busy', 'true');
+
+            setTimeout(() => {
+                if (category === 'All') renderGigs(allGigs);
+                else renderGigs(allGigs.filter(gig => gig.category === category));
+                // keep filtered state for search
+                currentCategory = category;
+            }, 100);
+        }
+
+        // --- Search logic (new) ---
+        let currentCategory = 'All';
+        function searchGigs() {
+            const q = (document.getElementById('search-box').value || '').trim().toLowerCase();
+            const container = document.getElementById('gig-container');
+            container.setAttribute('aria-busy', 'true');
+
+            setTimeout(() => {
+                let results = allGigs.slice();
+                if (currentCategory && currentCategory !== 'All') {
+                    results = results.filter(g => g.category === currentCategory);
+                }
+                if (q.length > 0) {
+                    results = results.filter(g => {
+                        return (g.name && g.name.toLowerCase().includes(q))
+                            || (g.category && g.category.toLowerCase().includes(q))
+                            || (g.estimated_pay && String(g.estimated_pay).toLowerCase().includes(q))
+                            || (g.payout_speed && g.payout_speed.toLowerCase().includes(q))
+                            || (g.trust_score && String(g.trust_score).includes(q));
+                    });
+                }
+                renderGigs(results);
+            }, 100);
+        }
+
+        function clearSearch() {
+            const el = document.getElementById('search-box');
+            if (el) {
+                el.value = '';
+                searchGigs();
+                el.focus();
+            }
+        }
+
+        // --- UPGRADED BOT (SUPER LLM EXPERIENCE) ---
+        let conversationContext = { history: [], lastIntent: null, lastExplanation: null, userData: {}, phase: 'greeting' };
+
+        function generateBotResponse(msg, context = null) {
+            const isStateful = (context !== null && typeof context === 'object');
+            let ctx = isStateful ? context : conversationContext;
+            if (!ctx.history) ctx.history = [];
+            if (!ctx.userData) ctx.userData = {};
+            if (!ctx.phase) ctx.phase = 'greeting';
+
+            const rawInput = msg.trim();
+            const input = rawInput.toLowerCase();
+            ctx.history.push({ role: 'user', text: rawInput, timestamp: Date.now() });
+            if (ctx.history.length > 20) ctx.history.shift();
+
+            // ========== MATH PARSER ENGINE (PRESERVED) ==========
+            function tokenize(expr) {
+                const tokens = [];
+                let i = 0;
+                while (i < expr.length) {
+                    let ch = expr[i];
+                    if (/\s/.test(ch)) { i++; continue; }
+                    if (/[0-9.]/.test(ch)) {
+                        let num = '';
+                        while (i < expr.length && /[0-9.]/.test(expr[i])) { num += expr[i]; i++; }
+                        tokens.push({ type: 'number', value: parseFloat(num) });
+                        continue;
+                    }
+                    if (ch === '+') { tokens.push({ type: 'operator', value: '+' }); i++; continue; }
+                    if (ch === '-') { tokens.push({ type: 'operator', value: '-' }); i++; continue; }
+                    if (ch === '*') { tokens.push({ type: 'operator', value: '*' }); i++; continue; }
+                    if (ch === '/') { tokens.push({ type: 'operator', value: '/' }); i++; continue; }
+                    if (ch === '^') { tokens.push({ type: 'operator', value: '^' }); i++; continue; }
+                    if (ch === '(') { tokens.push({ type: 'paren', value: '(' }); i++; continue; }
+                    if (ch === ')') { tokens.push({ type: 'paren', value: ')' }); i++; continue; }
+                    return null;
+                }
+                return tokens;
+            }
+            function parseExpression(tokens, pos) {
+                let left = parseTerm(tokens, pos);
+                if (left.error) return left;
+                pos = left.pos;
+                while (pos < tokens.length && tokens[pos].type === 'operator' && (tokens[pos].value === '+' || tokens[pos].value === '-')) {
+                    const op = tokens[pos].value;
+                    const right = parseTerm(tokens, pos + 1);
+                    if (right.error) return right;
+                    pos = right.pos;
+                    if (op === '+') left.value = left.value + right.value;
+                    else left.value = left.value - right.value;
+                }
+                return { value: left.value, pos: pos };
+            }
+            function parseTerm(tokens, pos) {
+                let left = parsePower(tokens, pos);
+                if (left.error) return left;
+                pos = left.pos;
+                while (pos < tokens.length && tokens[pos].type === 'operator' && (tokens[pos].value === '*' || tokens[pos].value === '/')) {
+                    const op = tokens[pos].value;
+                    const right = parsePower(tokens, pos + 1);
+                    if (right.error) return right;
+                    pos = right.pos;
+                    if (op === '*') left.value = left.value * right.value;
+                    else left.value = left.value / right.value;
+                }
+                return { value: left.value, pos: pos };
+            }
+            function parsePower(tokens, pos) {
+                let left = parseFactor(tokens, pos);
+                if (left.error) return left;
+                pos = left.pos;
+                if (pos < tokens.length && tokens[pos].type === 'operator' && tokens[pos].value === '^') {
+                    const right = parsePower(tokens, pos + 1);
+                    if (right.error) return right;
+                    pos = right.pos;
+                    left.value = Math.pow(left.value, right.value);
+                }
+                return { value: left.value, pos: pos };
+            }
+            function parseFactor(tokens, pos) {
+                if (pos >= tokens.length) return { error: 'unexpected end' };
+                const token = tokens[pos];
+                if (token.type === 'number') return { value: token.value, pos: pos + 1 };
+                if (token.type === 'paren' && token.value === '(') {
+                    const inner = parseExpression(tokens, pos + 1);
+                    if (inner.error) return inner;
+                    if (inner.pos >= tokens.length || tokens[inner.pos].type !== 'paren' || tokens[inner.pos].value !== ')')
+                        return { error: 'missing closing parenthesis' };
+                    return { value: inner.value, pos: inner.pos + 1 };
+                }
+                return { error: `unexpected token: ${token.value}` };
+            }
+            function evaluateMathExpression(expr) {
+                try {
+                    const tokens = tokenize(expr);
+                    if (!tokens) return null;
+                    const result = parseExpression(tokens, 0);
+                    if (result.error || result.pos !== tokens.length) return null;
+                    return Math.round(result.value * 10000) / 10000;
+                } catch (e) { return null; }
+            }
+            function evaluateMath(expr) {
+                const match = expr.match(/^\s*(\d+(?:\.\d+)?)\s*([+\-*/])\s*(\d+(?:\.\d+)?)\s*$/);
+                if (!match) return null;
+                let [_, a, op, b] = match;
+                a = parseFloat(a); b = parseFloat(b);
+                if (isNaN(a) || isNaN(b)) return null;
+                let result;
+                switch (op) {
+                    case '+': result = a + b; break;
+                    case '-': result = a - b; break;
+                    case '*': result = a * b; break;
+                    case '/': if (b === 0) return null; result = a / b; break;
+                    default: return null;
+                }
+                return Math.round(result * 100) / 100;
+            }
+
+            const advancedMathResult = evaluateMathExpression(rawInput);
+            if (advancedMathResult !== null) {
+                const reply = `🧮 <b>${rawInput} = ${advancedMathResult}</b><br><br>Need another calculation? I can handle + - * / ^ and parentheses. Also, if you have a dollar goal (like "I want $500"), I'll tell you how many hours of gig work that takes.`;
+                if (isStateful) { ctx.lastIntent = 'math'; ctx.lastExplanation = `I can do advanced math including power (^) and parentheses, e.g., "2^8" or "(5+3)*2".`; return { reply, context: ctx }; }
+                return reply;
+            }
+            const basicMathResult = evaluateMath(rawInput);
+            if (basicMathResult !== null) {
+                const reply = `🧮 <b>${rawInput} = ${basicMathResult}</b><br><br>By the way, if you have a dollar goal in mind (like "I want $500"), just tell me and I'll help you figure out how many hours of gig work that might take.`;
+                if (isStateful) { ctx.lastIntent = 'math'; ctx.lastExplanation = `I can do basic math like addition, subtraction, multiplication, and division.`; return { reply, context: ctx }; }
+                return reply;
+            }
+
+            // ========== YIELD GOAL CALCULATOR (PRESERVED) ==========
+            const moneyMatch = input.match(/\$?(\d{2,5})(?:\s*(?:dollars|usd|yield|target|earn|make))?/);
+            if (moneyMatch) {
+                const goal = parseInt(moneyMatch[1], 10);
+                if (goal >= 10 && goal <= 99999) {
+                    const hours = (goal / 25).toFixed(1);
+                    const days = (hours / 3).toFixed(1);
+                    let advice = '';
+                    if (goal < 500) advice = 'You can reach this pretty quickly on sites like Prolific or DataAnnotation within a week.';
+                    else if (goal < 2000) advice = 'Try combining Prolific for steady daily work and Respondent for higher-paying interviews. That mix works great.';
+                    else advice = 'Focus on Respondent and other specialist platforms. Highlight your professional skills in your profile to land those big sessions.';
+                    const reply = `💰 <b>To earn $${goal.toLocaleString()}:</b><br>⏱️ About <b>${hours} hours</b> of work (at $25/hour average)<br>📅 Roughly <b>${days} days</b> if you do 3 hours a day<br>💡 ${advice}<br><br><i>Track your actual earnings – everyone's pace is a little different!</i>`;
+                    if (isStateful) { ctx.lastIntent = 'yieldGoal'; ctx.lastExplanation = `I calculated how many hours you'd need to earn $${goal.toLocaleString()} based on an average rate of $25 per hour.`; ctx.userData.lastGoal = goal; return { reply, context: ctx }; }
+                    return reply;
+                }
+            }
+
+            // ========== TELEKOM RAPPORT FLOW (PHASE SYSTEM) ==========
+            const greetingPattern = /\b(hello|hi|hey|sup|yo|howdy|greetings)\b|\bgood\s+(morning|afternoon|evening)\b/i;
+            const rapportPattern = /how\s*(are|'s|is|you)\s*(doin|doing|you|it|things|going|life|everything|your\s*(day|session))|what['’]?s\s+(up|good|happening|cooking|going\s+on)/i;
+
+            if (greetingPattern.test(input)) {
+                ctx.lastIntent = 'greeting';
+                if (ctx.phase === 'greeting') {
+                    ctx.phase = 'rapport';
+                    let reply = "👋 **Welcome to Prompt Profits!** I'm your Protocol Advisor. I can help you with platform strategies, yield targets, and technical know‑how. How can I assist you today?";
+                    if (isStateful) return { reply, context: ctx };
+                    return reply;
+                }
+                let reply = "Hey! Ready for some high-yield work? What's on the agenda?";
+                if (isStateful) return { reply, context: ctx };
+                return reply;
+            }
+
+            if (rapportPattern.test(input)) {
+                ctx.lastIntent = 'rapport';
+                const rapportResponses = [
+                    "I'm operating at peak efficiency — all diagnostics nominal. Thanks for asking! How is your session going? Are you setting a yield target today?",
+                    "🦾 **Systems green, all good here.** I'm currently monitoring global gig platform trends. How can I help you maximize your operational yield?",
+                    "Neural pathways are clear and the database connection is stable. I'm ready to hunt for opportunities — what's our objective?",
+                    "Doing great! I'm calibrated and ready to crunch some numbers or talk strategy. What's on your mind?"
+                ];
+                
+                const response = rapportResponses[Math.floor(Math.random() * rapportResponses.length)];
+                ctx.phase = 'operational';
+                if (isStateful) return { reply: response, context: ctx };
+                return response;
+            }
+
+            // Operational intent detection (set phase if needed)
+            const operationalKeywords = ['prolific','respondent','dataannotation','cloudresearch','mturk','usertesting','intellizoom','platform','site','survey','study','interview','tax','finanzamt','steuer','vat','paypal','payout','withdrawal','minimum','vpn','proxy','ban','rejection','attention check','profile','qualification','screening','id verification','verify','verification','email','phone','document','reject','banned','blocked','suspended','account','payment','payoneer','transfer','earn','money','dollar','yield','target','goal'];
+            const isOperational = operationalKeywords.some(kw => input.includes(kw));
+            if (isOperational && ctx.phase !== 'operational') {
+                ctx.phase = 'operational';
+            }
+
+            // ========== EXPLAIN TRIGGERS (PRESERVED) ==========
+            const explainTriggers = ['what does that mean', 'explain', 'tell me more', 'can you explain', 'i don\'t understand', 'what do you mean', 'elaborate'];
+            if (explainTriggers.some(trigger => input.includes(trigger)) && ctx.lastIntent && ctx.lastExplanation) {
+                const reply = `📖 Sure! ${ctx.lastExplanation}<br><br>Want me to go deeper on any part, or do you have another question?`;
+                if (isStateful) return { reply, context: ctx };
+                return reply;
+            }
+
+            // ========== OPERATIONAL INTENTS MATCHING ==========
+            const intents = [
+                {
+                    name: 'vpn',
+                    keywords: ['vpn', 'proxy', 'hide ip', 'change location', 'spoof location', 'different country', 'log in from abroad'],
+                    weight: 1.5,
+                    response: (ctx, tone) => "🚫 **VPN/Proxy: Hard No.** Platforms like Prolific and Respondent detect these instantly. You **will** get banned permanently. Work only from your registered residence.",
+                    explanation: "VPN and proxy rules are strictly enforced to prevent demographic fraud."
+                },
+                {
+                    name: 'tax',
+                    keywords: ['tax', 'taxes', 'finanzamt', 'steuer', 'vat', 'declare', 'irs', 'hmrc'],
+                    weight: 1.5,
+                    response: (ctx, tone) => "📑 **Tax Obligations:** Gig income is taxable. In Germany, register with the Finanzamt (Kleinunternehmerregelung is common). In the US, report income over $400. Keep records of every payout!",
+                    explanation: "Most platforms report earnings to authorities. Don't assume you're under the radar."
+                },
+                {
+                    name: 'platforms',
+                    keywords: ['prolific', 'respondent', 'dataannotation', 'cloudresearch', 'mturk', 'best platform', 'which site', 'recommend'],
+                    weight: 1.2,
+                    response: (ctx, tone) => "🔍 **Top Vetted Platforms:**<br>• <b>Prolific</b> (Academic studies, 10/10 trust)<br>• <b>Respondent</b> (High-pay interviews, $100+)<br>• <b>DataAnnotation</b> (AI training, reliable hourly). Check the grid above!",
+                    explanation: "We prioritize platforms with high pay-to-effort ratios."
+                },
+                {
+                    name: 'rejection',
+                    keywords: ['rejection', 'rejected', 'why was i rejected', 'screening', 'didn\'t qualify', 'unfair', 'ban', 'blocked', 'suspended'],
+                    weight: 1.3,
+                    response: (ctx, tone) => {
+                        if (tone === 'supportive') return "Rejections are frustrating, but they're often automated. **Never lie** on screeners — researchers use consistency checks. If you were banned unfairly, politely contact support with evidence. Focus on platforms that value your time and skills.";
+                        return "❌ **Rejection/Ban?** Rejections happen when you don't match the target demographic or your answers are inconsistent. Some platforms (like Prolific) will tell you why. For bans, always appeal professionally, but if it's due to a VPN or bot‑like behavior, chances are slim. Build a strong profile to minimize rejections.";
+                    },
+                    explanation: "Rejections are common in online research. Stay honest on screeners, keep your profile updated, and contact support if you believe a rejection was unfair."
+                },
+                {
+                    name: 'attention_check',
+                    keywords: ['attention check', 'trick question', 'caught me', 'failed attention', 'comprehension check'],
+                    weight: 1.2,
+                    response: (ctx, tone) => "🧠 **Attention Checks:** These are questions designed to ensure you're reading carefully (e.g., 'Select Strongly Disagree for this option'). Failing too many can get you banned. Read every question, and if you spot a trick, follow its instructions exactly. Slow down — speed is the #1 reason for failing.",
+                    explanation: "Attention checks are quality control measures. Always read every question carefully and follow any specific instructions embedded in the question text."
+                },
+                {
+                    name: 'profile',
+                    keywords: ['profile', 'about me', 'how to fill profile', 'bio', 'description', 'increase chances'],
+                    weight: 1.1,
+                    response: (ctx, tone) => "📝 **Profile Optimization:** Complete every section — education, employment, interests, languages. For Respondent, a professional LinkedIn‑style bio increases your invitation rate. Use a clear, friendly photo (if allowed). Honesty is crucial; inconsistencies will get you flagged.",
+                    explanation: "A complete and honest profile is the best way to qualify for more studies. Fill out all demographic fields and keep them up‑to‑date."
+                },
+                {
+                    name: 'withdrawal',
+                    keywords: ['withdraw', 'cash out', 'payout', 'minimum payout', 'how to get money', 'payoneer', 'transfer', 'paypal', 'bank'],
+                    weight: 1.3,
+                    response: (ctx, tone) => "💸 **Withdrawals & Payouts:** Most platforms pay via PayPal or Payoneer. Minimum thresholds vary: Prolific £6, Respondent $20, DataAnnotation varies. Payouts are usually instant or within 24h. Always verify your payment email and complete any ID verification to avoid holds.",
+                    explanation: "Payout methods and minimum thresholds depend on the platform. PayPal and Payoneer are the most common. Check each platform's help center for details."
+                },
+                {
+                    name: 'verification',
+                    keywords: ['verify', 'id verification', 'identity', 'phone verification', 'email verification', 'document'],
+                    weight: 1.1,
+                    response: (ctx, tone) => "🪪 **ID Verification:** Some platforms (Respondent, Prolific) require ID verification to prevent fraud. This is normal. Use a clear photo of your government ID. If you’re uncomfortable, stick to platforms that don’t require it (like DataAnnotation). Never send sensitive docs via email — always through the platform’s secure portal.",
+                    explanation: "ID verification is a standard trust and safety measure on many paid research platforms. Follow the platform's secure upload process."
+                },
+                {
+                    name: 'about',
+                    keywords: ['what is prompt profits', 'about this site', 'who made this', 'what do you do', 'purpose', 'mission'],
+                    weight: 0.8,
+                    response: (ctx, tone) => "🌐 **Prompt Profits** is a curated collection of high‑yield, vetted gig and research platforms. We focus on quality over quantity — you won't find low-paying survey mills here. Built for focused side‑hustlers, developers, and creatives. All platforms are hand‑tested, and we're transparent about affiliates (only one).",
+                    explanation: "Prompt Profits is a community resource that lists hand‑vetted, high‑paying online work opportunities with zero fluff."
+                }
+            ];
+
+            let bestIntent = null, bestScore = 0;
+            for (const intent of intents) {
+                let score = 0;
+                for (const kw of intent.keywords) {
+                    if (input.includes(kw)) {
+                        score += intent.weight;
+                        if (new RegExp(`\\b${kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(input)) score += 0.5;
+                    }
+                }
+                if (input.includes('no ') && intent.name === 'vpn') score = 0;
+                if (score > bestScore) { bestScore = score; bestIntent = intent; }
+            }
+
+            if (bestIntent && bestScore >= 1.0) {
+                const tone = (() => { const neg = ['hate', 'frustrated', 'annoying', 'useless', 'waste', 'quit', 'stressed', 'overwhelmed', 'unfair', 'scam', 'cheated', 'ban', 'suspended']; return neg.some(w => input.includes(w)) ? 'supportive' : 'neutral'; })();
+                const responseText = typeof bestIntent.response === 'function' ? bestIntent.response(ctx, tone) : bestIntent.response;
+                if (isStateful) { 
+                    ctx.lastIntent = bestIntent.name; 
+                    ctx.lastExplanation = bestIntent.explanation || responseText.replace(/<[^>]*>/g, '').substring(0, 400); 
+                    ctx.phase = 'operational';
+                    return { reply: responseText, context: ctx }; 
+                }
+                return responseText;
+            }
+
+            // ========== DYNAMIC FALLBACK (FIXED) ==========
+            const ignoreFallbackHistory = ['greeting', 'rapport', 'math', 'yieldGoal'];
+            if (isStateful && ctx.lastIntent && !ignoreFallbackHistory.includes(ctx.lastIntent) && ctx.history.length >= 2) {
+                const lastUserMsg = ctx.history[ctx.history.length - 2]?.text || '';
+                if (lastUserMsg.length < 25 && input.length < 30) {
+                    const followUp = `I see you're asking about **${ctx.lastIntent}**. Could you be more specific? Tell me a platform name or a specific problem you're facing.`;
+                    ctx.lastIntent = null;
+                    return { reply: followUp, context: ctx };
+                }
+            }
+
+            let fallbackReply = "🤔 Hmm, I'm not sure I understood that. I can help with:<br><br>• <b>Platforms</b> like Prolific, Respondent, DataAnnotation<br>• <b>Math</b> (try \"2^8\" or \"(5+3)*2\")<br>• <b>Earnings goals</b> (like \"I want $500\")<br>• <b>Taxes, bans, VPN, profiles, rejections, attention checks</b><br>• <b>About this site</b> (\"what is Prompt Profits\")<br><br>Just ask in plain English! 😊";
+
+            if (isStateful && ctx.history.length >= 2) {
+                const last = ctx.history[ctx.history.length - 2].text.toLowerCase();
+                if (last.includes('platform') || last.includes('site')) {
+                    fallbackReply = "It sounds like you’re interested in platforms. Try asking about Prolific, Respondent, or DataAnnotation. You can also filter by category (5‑min, hourly, skill‑based) at the top of the page.";
+                } else if (last.match(/\$\d+/)) {
+                    fallbackReply = "You mentioned a dollar amount earlier. If you have a yield target, just say \"I want $500\" and I’ll break it down for you.";
+                } else if (last.includes('tax') || last.includes('finanzamt')) {
+                    fallbackReply = "You were asking about taxes. You can try: \"Do I have to pay taxes on Prolific income?\" or \"Finanzamt rules for gig work\".";
+                } else if (last.includes('vpn') || last.includes('ban')) {
+                    fallbackReply = "It looks like you’re concerned about VPNs or bans. Ask me: \"Should I use a VPN?\" or \"What if I get banned?\"";
+                } else if (input.match(/who are you|what are you/)) {
+                    fallbackReply = "🤖 I'm Protocol Advisor, your personal AI assistant for Prompt Profits. I'm built right into the platform (no external LLMs here!) to help you with gigs, yields, and technical questions.";
+                } else if (input.match(/joke|laugh/)) {
+                    fallbackReply = "Why did the AI cross the road? To optimize its yield targets! 🤖 OK, back to business—what platform are we looking at today?";
+                } else {
+                    fallbackReply = "🤔 **I didn't quite catch that.** Try asking me about:<br>• **Yield Targets** (\"I want $500\")<br>• **Taxes** (\"Finanzamt rules\")<br>• **Bans** (\"VPN warnings\")<br>• **Math** (\"25 * 4\")<br>Or just say hi!";
+                }
+            }
+
+            if (isStateful) { ctx.lastIntent = null; return { reply: fallbackReply, context: ctx }; }
+            return fallbackReply;
+        }
+
+        function chatGenerateResponse(msg) {
+            const result = generateBotResponse(msg, conversationContext);
+            if (typeof result === 'string') return result;
+            conversationContext = result.context;
+            return result.reply;
+        }
+
+        // --- Chat Widget Logic (preserved) ---
+        function toggleChat() {
+            const panel = document.getElementById('chat-panel');
+            panel.classList.toggle('hidden');
+            const isHidden = panel.classList.contains('hidden');
+            const btn = document.getElementById('open-chat');
+            btn.setAttribute('aria-expanded', !isHidden);
+            if (!isHidden) {
+                const input = document.getElementById('chat-input');
+                if (input) input.focus();
+            }
+            playBlip();
+        }
+        function handleChatEnter(event) { if (event.key === 'Enter') sendChatMessage(); }
+
+        function sendChatMessage() {
+            const inputField = document.getElementById('chat-input');
+            const message = inputField.value.trim();
+            if (!message) return;
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML += `<div class="flex flex-col items-end"><span class="bg-darktech-border text-darktech-text px-4 py-2 rounded-2xl rounded-tr-none max-w-[85%] border border-darktech-border">${escapeHtml(message)}</span></div>`;
+            inputField.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                const response = chatGenerateResponse(message);
+                chatMessages.innerHTML += `<div class="flex flex-col items-start"><span class="bg-darktech-card text-darktech-text px-4 py-2 rounded-2xl rounded-tl-none max-w-[85%] border border-darktech-border">${response}</span></div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                playNotification();
+            }, 600);
+            playBlip();
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        // ===== GLOBAL VISITOR COUNTER =====
+        async function updateVisitorCount() {
+            try {
+                const { data, error } = await supabaseClient.rpc('increment_page_view');
+                if (error) throw error;
+
+                const countEl = document.getElementById('visitor-count');
+                if (countEl && data !== null) {
+                    countEl.innerText = data.toLocaleString();
+                    countEl.classList.remove('animate-pulse');
+                }
+            } catch (err) {
+                console.error('Counter error:', err);
+                const countEl = document.getElementById('visitor-count');
+                if (countEl) {
+                    countEl.innerText = 'OFFLINE';
+                    countEl.classList.remove('animate-pulse');
+                }
+            }
+        }
+
+        // Initialize on load
+        fetchGigs();
+        updateFilterButtonState('All');
+        applySoundUI();
+        updateVisitorCount();
+    </script>
+</body>
+</html>
