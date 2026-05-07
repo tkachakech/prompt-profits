@@ -150,9 +150,10 @@
     </style>
 </head>
 <body class="bg-darktech-bg text-darktech-text min-h-screen font-sans antialiased relative pb-20 selection:bg-darktech-accent selection:text-darktech-bg">
-    <!-- System Notice -->
-    <div id="system-notice" class="sticky top-0 z-[100] bg-yellow-900/80 text-yellow-100 p-2 text-center text-sm font-semibold backdrop-blur-md border-b border-yellow-600/50">
-        ⚠️ Userlytics is currently experiencing payment delays, and verification can take more than a week.
+    <!-- Dynamic Orange Alert Bar (controlled via site_settings in Supabase) -->
+    <div id="global-alert-bar" class="sticky top-0 z-[100] hidden bg-orange-900/90 text-orange-100 p-2 text-center text-sm font-semibold backdrop-blur-md border-b border-orange-500/50">
+        <span id="global-alert-text">⚠️ Loading alert...</span>
+        <button onclick="document.getElementById('global-alert-bar').style.display='none'" class="ml-4 opacity-60 hover:opacity-100 transition-opacity" aria-label="Dismiss alert">✕</button>
     </div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -560,39 +561,57 @@
             }
         }
 
+        // ===== SITE SETTINGS (Orange Alert + Operative Count) =====
+        async function fetchSiteSettings() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('site_settings')
+                    .select('global_alert_message, show_global_alert, total_users_count')
+                    .limit(1)
+                    .single();
+                if (error || !data) return;
+
+                // Orange Alert Bar
+                const alertBar = document.getElementById('global-alert-bar');
+                const alertText = document.getElementById('global-alert-text');
+                if (data.show_global_alert && data.global_alert_message) {
+                    alertText.textContent = '⚠️ ' + data.global_alert_message;
+                    alertBar.classList.remove('hidden');
+                }
+
+                // Global Operatives footer counter
+                const countEl = document.getElementById('visitor-count');
+                if (countEl && data.total_users_count !== null) {
+                    countEl.innerText = Number(data.total_users_count).toLocaleString();
+                    countEl.classList.remove('animate-pulse');
+                }
+            } catch (err) {
+                console.error('Site settings error:', err);
+            }
+        }
+
         async function fetchGigs() {
             try {
-                const { data, error } = await supabaseClient.from('platforms').select('*').order('trust_score', { ascending: false });
+                const { data, error } = await supabaseClient
+                    .from('platforms')
+                    .select('*')
+                    .eq('is_active', true)
+                    .order('trust_score', { ascending: false });
                 if (error) throw error;
                 if (!data || data.length === 0) {
                     document.getElementById('gig-container').innerHTML = `<div class="col-span-full text-center py-10 glass-panel rounded-xl"><i class="ph ph-database text-4xl text-darktech-textMuted mb-2" aria-hidden="true"></i><p class="text-darktech-textMuted">Database is empty. Add sites in Supabase to see them here.</p></div>`;
                     document.getElementById('gig-container').setAttribute('aria-busy', 'false');
                     return;
                 }
-                allGigs = data;
-                
-                // --- CUSTOM OVERRIDES ---
-                allGigs = allGigs.map(gig => {
-                    const lowerName = gig.name.toLowerCase();
-                    if (lowerName.includes('userlytics')) {
-                        gig.trust_score = 6.5;
-                        gig.note = 'Userlytics is currently experiencing payment delays, and verification can take more than a week.';
-                    } else if (lowerName.includes('respondent')) {
-                        gig.trust_score = 4.0;
-                        gig.note = 'Currently not working for users in this region.';
-                    } else if (lowerName.includes('user interviews')) {
-                        gig.trust_score = 4.0;
-                        gig.note = 'Currently not working.';
-                    } else if (lowerName.includes('userbrain')) {
-                        gig.trust_score = 3.5;
-                        gig.note = 'Currently not working / not accepting new applicants.';
-                    } else if (lowerName.includes('prolific')) {
-                        gig.trust_score = 9.8;
+
+                // Mark Prolific as top pick from DB data
+                allGigs = data.map(gig => {
+                    if (gig.name && gig.name.toLowerCase().includes('prolific')) {
                         gig.isTopPick = true;
                     }
                     return gig;
                 });
-                
+
                 renderGigs(allGigs);
             } catch (err) {
                 console.error(err);
@@ -612,8 +631,10 @@
             }
 
             gigs.forEach(gig => {
-                const targetUrl = gig.referral_link ? gig.referral_link : gig.url;
-                const isAffiliate = gig.referral_link ? `<div class="absolute -top-3 -right-3 bg-gradient-to-r from-darktech-accent to-green-400 text-darktech-bg text-[10px] font-extrabold px-3 py-1.5 rounded-full shadow-glow z-10 flex items-center gap-1 uppercase tracking-wider" aria-label="Affiliate link active"><i class="ph-fill ph-star" aria-hidden="true"></i> Bonus Active</div>` : '';
+                // affiliate_url takes priority, then referral_link, then standard url
+                const targetUrl = gig.affiliate_url || gig.referral_link || gig.url;
+                const hasBonus = !!(gig.affiliate_url || gig.referral_link);
+                const isAffiliate = hasBonus ? `<div class="absolute -top-3 -right-3 bg-gradient-to-r from-darktech-accent to-green-400 text-darktech-bg text-[10px] font-extrabold px-3 py-1.5 rounded-full shadow-glow z-10 flex items-center gap-1 uppercase tracking-wider" aria-label="Affiliate link active"><i class="ph-fill ph-star" aria-hidden="true"></i> Bonus Active</div>` : '';
 
                 let catColor = "text-darktech-textMuted";
                 let catLabel = gig.category;
@@ -636,7 +657,7 @@
                                 <div class="flex items-center gap-2"><i class="ph ph-currency-dollar text-green-400 text-lg" aria-hidden="true"></i><span><strong class="text-darktech-text">Pay:</strong> <span class="text-green-400 font-semibold">${gig.estimated_pay || 'Varies'}</span></span></div>
                                 <div class="flex items-center gap-2"><i class="ph ph-bank text-darktech-textMuted text-lg" aria-hidden="true"></i><span><strong class="text-darktech-text">Payout:</strong> ${gig.payout_speed || 'Standard'} <span class="text-darktech-textMuted">(Min: ${gig.threshold || '$0'})</span></span></div>
                                 <div class="flex items-center gap-2"><i class="ph-fill ph-shield-check text-darktech-accent text-lg" aria-hidden="true"></i><span><strong class="text-darktech-text">Trust Score:</strong> ${gig.trust_score || 'N/A'}/10</span></div>
-                                ${gig.note ? `<div class="flex items-start gap-2 mt-3 p-3 bg-red-900/20 border border-red-500/30 rounded-lg"><i class="ph-fill ph-warning-circle text-red-400 text-lg mt-0.5" aria-hidden="true"></i><span class="text-red-200 text-sm italic">${gig.note}</span></div>` : ''}
+                                ${(gig.vetted_notes) ? `<div class="flex items-start gap-2 mt-3 p-3 bg-red-900/30 border border-red-500/50 rounded-lg shadow-inner"><i class="ph-fill ph-warning-circle text-red-400 text-lg mt-0.5 flex-shrink-0" aria-hidden="true"></i><span class="text-red-200 text-sm italic leading-snug">${gig.vetted_notes}</span></div>` : ''}
                             </div>
                             <div class="mt-auto pt-4">
                                 <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full text-center bg-darktech-card border border-darktech-border hover:bg-darktech-accent hover:text-darktech-bg hover:border-darktech-accent text-darktech-text px-5 py-3 rounded-xl transition-all duration-fast font-bold uppercase tracking-wider text-sm group-hover:shadow-glow focus-visible:outline-offset-2">
@@ -1086,32 +1107,11 @@
             });
         }
 
-        // ===== GLOBAL VISITOR COUNTER =====
-        async function updateVisitorCount() {
-            try {
-                const { data, error } = await supabaseClient.rpc('increment_page_view');
-                if (error) throw error;
-
-                const countEl = document.getElementById('visitor-count');
-                if (countEl && data !== null) {
-                    countEl.innerText = data.toLocaleString();
-                    countEl.classList.remove('animate-pulse');
-                }
-            } catch (err) {
-                console.error('Counter error:', err);
-                const countEl = document.getElementById('visitor-count');
-                if (countEl) {
-                    countEl.innerText = 'OFFLINE';
-                    countEl.classList.remove('animate-pulse');
-                }
-            }
-        }
-
-        // Initialize on load
+        // ===== INITIALIZE ON LOAD =====
         fetchGigs();
+        fetchSiteSettings();
         updateFilterButtonState('All');
         applySoundUI();
-        updateVisitorCount();
     </script>
 </body>
 </html>
