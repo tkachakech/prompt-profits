@@ -583,7 +583,7 @@
                 const { data, error } = await supabaseClient
                     .from('site_settings')
                     .select('global_alert_message, show_global_alert, total_users_count')
-                    .eq('id', 1)
+                    .eq('site_tag', 'gigcuration')
                     .single();
                 if (error || !data) return;
 
@@ -612,6 +612,7 @@
                     .from('platforms')
                     .select('*')
                     .eq('is_active', true)
+                    .eq('site_tag', 'gigcuration')
                     .order('trust_score', { ascending: false });
                 if (error) throw error;
                 if (!data || data.length === 0) {
