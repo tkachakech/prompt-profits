@@ -1124,9 +1124,31 @@
             });
         }
 
+        // ===== LIFETIME VISITOR INCREMENT =====
+        // Fires once per browser session (not per page reload), adds +1 to DB counter
+        async function incrementVisitor() {
+            if (sessionStorage.getItem('_visited')) return;
+            sessionStorage.setItem('_visited', '1');
+            try {
+                // Atomic increment: read then write
+                const { data } = await supabaseClient
+                    .from('site_settings')
+                    .select('total_users_count, id')
+                    .eq('site_tag', 'gigcuration')
+                    .single();
+                if (data) {
+                    await supabaseClient
+                        .from('site_settings')
+                        .update({ total_users_count: (data.total_users_count || 0) + 1 })
+                        .eq('id', data.id);
+                }
+            } catch (_) {}
+        }
+
         // ===== INITIALIZE ON LOAD =====
         fetchGigs();
         fetchSiteSettings();
+        incrementVisitor();
         updateFilterButtonState('All');
         applySoundUI();
     </script>
